@@ -14,6 +14,16 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+  # Test for positive side lengths.
+  if a <= 0 || b <= 0 || c <= 0
+    fail TriangleError, "All sides must be greater than zero."
+  end
+
+  # Test triangel inequality.
+  if a + b <= c || a + c <= b || b + c <= a
+    fail TriangleError, "Triangle fails triangle inequality."
+  end
+
   if a == b && b == c
     return :equilateral
   elsif a == b || b == c || a == c
